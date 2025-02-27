@@ -43,6 +43,7 @@ function LoginForm() {
             Swal.fire({
                 icon: 'error',
                 title: 'Login Failed',
+                text: `${error}`,
                 showConfirmButton: false,
                 timer: 1500
             });
