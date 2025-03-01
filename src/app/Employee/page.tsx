@@ -22,7 +22,7 @@ function Employee() {
         const fetchEmployee = async () => {
             try {
                 const FetchResponse = await axios.post(`${LocalURL}/Employee/FetchEmployee`, {
-                    "EMP_ID": "",
+                    "EMP_USERNAME": "",
                 }, {
                     headers: {
                         'Content-Type': 'application/json',
@@ -31,7 +31,7 @@ function Employee() {
                         return status < 500;
                     },
                 });
-                console.log(FetchResponse.data['data']);
+                // console.log(FetchResponse.data['data']);
                 setEmployeeData(FetchResponse.data['data']);
             }
             catch (error) {
@@ -61,7 +61,7 @@ function Employee() {
                 <div className="z-20 w-64">
                     <Sidebar />
                 </div>
-                <div className="flex-1">
+                <div className="flex-1 m-4">
                     <div className="flex flex-col lg:flex-row p-1 justify-between items-center mb-4 space-x-4">
                         <div className="flex items-center space-x-2">
                             <label htmlFor="itemsPerPage" className="mr-2">Items per page:</label>
@@ -78,7 +78,9 @@ function Employee() {
                             </select>
                         </div>
                         <div className="flex items-center space-x-2">
-                            <button className="cursor-pointer bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full ml-2"><FaPlus /></button>
+                            <Link href="/Employee/Register">
+                                <button className="cursor-pointer bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full ml-2"><FaPlus /></button>
+                            </Link>
                             <input
                                 type="text"
                                 placeholder="Search Employee"
@@ -116,8 +118,8 @@ function Employee() {
                                                 <tr key={Employee.EMP_ID} className='hover:bg-gray-100'>
                                                     <td className="px-4 py-3">{Employee.EMP_ID}</td>
                                                     <td className="px-4 py-3">{Employee.EMP_NAME}</td>
-                                                    <td className="px-4 py-3">{Employee.EMP_DEPARTMENT}</td>
-                                                    <td className="px-4 py-3">{Employee.EMP_POSITION}</td>
+                                                    <td className="px-4 py-3">{Employee.DEP_NAME}</td>
+                                                    <td className="px-4 py-3">{Employee.JOT_NAME}</td>
                                                     <td className='px-4 py-3'>{Employee.EMP_ROLE}</td>
                                                     <td className="px-4 py-3">{Employee.EMP_STATUS}</td>
                                                     <td className="px-4 py-3 text-center">
